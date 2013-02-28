@@ -22,6 +22,7 @@ import static com.nostra13.universalimageloader.core.ImageLoader.LOG_IMAGE_SUBSA
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -76,8 +77,10 @@ class ImageDecoder {
 	 * @throws UnsupportedOperationException
 	 */
 	public Bitmap decode(ImageSize targetSize, ImageScaleType scaleType, ViewScaleType viewScaleType) throws IOException {
+		// Test
 		Options decodeOptions = getBitmapOptionsForImageDecoding(targetSize, scaleType, viewScaleType);
-		InputStream imageStream = imageDownloader.getStream(imageUri, displayOptions.getExtraForDownloader());
+		//InputStream imageStream = this.imageDownloader.getStream(this.imageUri, this.displayOptions.getExtraForDownloader());
+		InputStream imageStream = (InputStream)new URL(this.imageUri.toASCIIString()).getContent();
 		Bitmap subsampledBitmap;
 		try {
 			subsampledBitmap = BitmapFactory.decodeStream(imageStream, null, decodeOptions);
