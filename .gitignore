@@ -16,7 +16,6 @@ release.properties
 .externalToolBuilders/
 
 # IntelliJ
-*.iml
 *.ipr
 *.iws
 .idea/
